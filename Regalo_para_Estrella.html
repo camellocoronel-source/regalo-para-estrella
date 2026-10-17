@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8dce7">
+<title>Para Estrella 💗</title>
+<style>
+  :root { --rose:#e98cac; --deep:#9d4569; --cream:#fff8fb; --pink:#fce8f0; --ink:#6d3c51; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left,#fff8fb 0,#fce8f0 40%,#f7d4e2 100%);
+  }
+  .glow { position:fixed; width:260px; height:260px; border-radius:50%; filter:blur(35px); opacity:.45; z-index:-1; }
+  .g1 { top:5%; left:-90px; background:#fff; } .g2 { right:-90px; top:45%; background:#f2a9c5; }
+  .petals { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .petal { position:absolute; bottom:-40px; opacity:0; animation:floatUp linear infinite; color:#d66d96; }
+  @keyframes floatUp { 0%{transform:translateY(0) rotate(0deg);opacity:0} 10%{opacity:.55} 90%{opacity:.4} 100%{transform:translateY(-115vh) rotate(320deg);opacity:0} }
+  main { position:relative; z-index:1; width:min(920px,92%); margin:auto; padding:28px 0 46px; }
+  .topline { text-align:center; font-size:.82rem; letter-spacing:.18em; text-transform:uppercase; color:#b76585; }
+  .hero { text-align:center; padding:30px 14px 20px; }
+  .mini-heart { display:inline-grid; place-items:center; width:76px;height:76px;border-radius:50%; background:#fff9fc; box-shadow:0 10px 30px #c46c8c25; font-size:2.3rem; animation:heartbeat 2s infinite; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 8%{transform:scale(1.08)} 16%{transform:scale(1)} 24%{transform:scale(1.05)} 32%{transform:scale(1)} }
+  h1 { margin:18px 0 8px; font-family:Georgia,serif; font-weight:normal; font-size:clamp(2.6rem,8vw,5.4rem); color:var(--deep); line-height:1.04; }
+  .subtitle { font-family:Georgia,serif; font-style:italic; font-size:clamp(1.05rem,3vw,1.35rem); color:#a85b79; }
+  .ornament { margin:22px auto; color:#d88ba7; letter-spacing:.45em; }
+  .card { background:#fffafcdd; border:1px solid #fff; border-radius:28px; padding:clamp(22px,5vw,42px); box-shadow:0 18px 50px #a84f7020; backdrop-filter:blur(8px); }
+  .letter-label { text-align:center; text-transform:uppercase; letter-spacing:.18em; color:#c16e8d; font-size:.75rem; }
+  h2 { font-family:Georgia,serif; color:var(--deep); font-weight:normal; text-align:center; font-size:clamp(1.6rem,5vw,2.2rem); margin:12px 0 20px; }
+  .letter { max-width:650px; margin:auto; font-family:Georgia,serif; font-size:1.12rem; line-height:1.9; white-space:pre-line; }
+  .signature { text-align:right; font-family:Georgia,serif; font-style:italic; font-size:1.3rem; color:#a34f72; margin-top:22px; }
+  .buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin:25px 0 8px; }
+  button,.wa { appearance:none; border:0; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:999px; padding:13px 20px; font-weight:700; font-size:.95rem; transition:transform .2s, box-shadow .2s; }
+  button:hover,.wa:hover { transform:translateY(-2px); box-shadow:0 8px 20px #a84f7030; }
+  .primary { background:linear-gradient(135deg,#e88daf,#d96e98); color:white; box-shadow:0 7px 18px #d96e9833; }
+  .secondary { background:white; color:#a34f72; border:1px solid #f1c6d6; }
+  .hidden-note { display:none; margin:22px auto 0; padding:20px; max-width:560px; border-radius:20px; background:#fff0f6; text-align:center; line-height:1.8; animation:fade .5s ease; }
+  .hidden-note.show { display:block; }
+  @keyframes fade { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .little-things { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0; }
+  .thing { text-align:center; background:#fff9fcbd; border:1px solid #fff; border-radius:20px; padding:20px 12px; }
+  .thing .emoji { font-size:1.8rem; } .thing p { margin:8px 0 0; line-height:1.5; font-size:.92rem; }
+  .quote { text-align:center; font-family:Georgia,serif; font-style:italic; font-size:1.22rem; line-height:1.7; padding:22px 10px; color:#a34f72; }
+  footer { text-align:center; font-size:.85rem; color:#a86a83; padding:15px 8px 0; }
+  .music-status { text-align:center; font-size:.82rem; color:#a85b79; margin-top:10px; min-height:1.2em; }
+  @media(max-width:600px){ .little-things{grid-template-columns:1fr;gap:10px}.thing{display:flex;align-items:center;text-align:left;gap:14px;padding:14px 18px}.thing p{margin:0}.hero{padding-top:24px}.card{border-radius:23px} }
+  @media(prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<main>
+  <div class="topline">un pequeño detalle hecho con cariño</div>
+  <section class="hero">
+    <div class="mini-heart" aria-hidden="true">💗</div>
+    <h1>Para Estrella</h1>
+    <div class="subtitle">mi morenita bonita ✨</div>
+    <div class="ornament">♡ ── ⋆｡°✩ ── ♡</div>
+    <p>Hay detalles que no necesitan estar cerca para sentirse cerquita.</p>
+  </section>
+
+  <section class="card">
+    <div class="letter-label">una cartita para ti</div>
+    <h2>Hola, mi morenita 💌</h2>
+    <div class="letter">Quería regalarte algo diferente, algo que pudieras abrir en cualquier momento y que te recordara que hay alguien por aquí a quien le encanta conocerte.
+
+Me gusta hablar contigo, descubrir poquito a poquito cómo eres, conocer tus ocurrencias y encontrar motivos para sonreír gracias a ti. No sé qué nos depare el futuro, y tampoco quiero apresurar nada; prefiero que nos sigamos conociendo con calma, con sinceridad y con esa ilusión bonita que me nace cuando pienso en ti.
+
+Aunque por ahora nos separen kilómetros, quería hacerte llegar un detallito que te sacara una sonrisa. Ojalá algún día pueda darte flores en persona y ver tu carita al recibirlas. Mientras tanto, te mando este pedacito de cariño desde aquí.
+
+Gracias por dejarme conocerte, Estrella. Me alegra que nuestros caminos se hayan cruzado. 💗</div>
+    <div class="signature">Con mucho cariño,<br>alguien que sonríe al pensar en ti ♡</div>
+    <div class="buttons">
+      <button class="primary" id="revealBtn" type="button">Abrir una sorpresita 💝</button>
+      <button class="secondary" id="musicBtn" type="button">♫ Activar piano suave</button>
+    </div>
+    <div class="hidden-note" id="note">
+      <div style="font-size:2rem">🌷✨💗✨🌷</div>
+      <strong>Un deseo para ti</strong><br>
+      Que hoy tengas razones para sonreír, que nunca te falten motivos para sentirte especial y que la vida nos permita seguir compartiendo momentos bonitos, sin prisas y de corazón.
+      <div style="font-size:1.5rem;margin-top:10px">♡ Estrella ♡</div>
+    </div>
+    <div class="music-status" id="musicStatus" aria-live="polite">La música empieza cuando tú quieras 🎹</div>
+  </section>
+
+  <div class="little-things">
+    <div class="thing"><div class="emoji">🌸</div><p><strong>Me gusta conocerte</strong><br>cada plática suma un detalle bonito.</p></div>
+    <div class="thing"><div class="emoji">💌</div><p><strong>Sin prisas</strong><br>lo sincero se construye poco a poco.</p></div>
+    <div class="thing"><div class="emoji">🌙</div><p><strong>Desde lejos</strong><br>te mando un abrazo de los que duran.</p></div>
+  </div>
+  <div class="quote">“No quiero adelantar la historia; me gusta la idea de descubrirla contigo, un mensajito y una sonrisa a la vez.”</div>
+  <div class="buttons">
+    <a class="wa primary" id="shareBtn" href="https://wa.me/?text=Hice%20un%20peque%C3%B1o%20regalo%20virtual%20para%20ti%2C%20mi%20morenita%20Estrella.%20%C2%A1%C3%81brelo%20cuando%20puedas!%20%F0%9F%92%97" target="_blank" rel="noopener">Compartir mensajito por WhatsApp 💬</a>
+    <button class="secondary" id="heartsBtn" type="button">Lluvia de corazoncitos 💕</button>
+  </div>
+  <footer>Hecho con cariño para Estrella · ｡･:*:･ﾟ★,｡･:*:･ﾟ☆</footer>
+</main>
+<script>
+  const petals = document.getElementById('petals');
+  const symbols = ['♡','♥','✿','✧','❀'];
+  for(let i=0;i<24;i++){
+    const el=document.createElement('span'); el.className='petal';
+    el.textContent=symbols[i%symbols.length];
+    el.style.left=(Math.random()*100)+'%';
+    el.style.animationDuration=(11+Math.random()*15)+'s';
+    el.style.animationDelay=(-Math.random()*22)+'s';
+    el.style.fontSize=(12+Math.random()*20)+'px';
+    petals.appendChild(el);
+  }
+  document.getElementById('revealBtn').addEventListener('click',()=>{
+    const note=document.getElementById('note'); note.classList.toggle('show');
+    document.getElementById('revealBtn').textContent=note.classList.contains('show')?'Cerrar sorpresita 💗':'Abrir una sorpresita 💝';
+  });
+  document.getElementById('heartsBtn').addEventListener('click',()=>{
+    for(let i=0;i<32;i++){
+      const h=document.createElement('span'); h.textContent=['💗','💕','💖','♡'][Math.floor(Math.random()*4)];
+      h.style.position='fixed'; h.style.left=(5+Math.random()*90)+'vw'; h.style.bottom='-30px';
+      h.style.fontSize=(18+Math.random()*22)+'px'; h.style.zIndex='5'; h.style.pointerEvents='none';
+      h.style.transition='transform 3.5s ease-out, opacity 3.5s ease-out'; document.body.appendChild(h);
+      requestAnimationFrame(()=>{h.style.transform=`translateY(-${55+Math.random()*80}vh) rotate(${Math.random()*100-50}deg)`;h.style.opacity='0';});
+      setTimeout(()=>h.remove(),3700);
+    }
+  });
+  // A small original piano-like melody made with Web Audio; no audio file or external service required.
+  let audioCtx=null, timer=null, playing=false, noteIndex=0;
+  const melody=[
+    [523.25,0.36],[659.25,0.36],[783.99,0.55],[659.25,0.36],
+    [587.33,0.36],[659.25,0.36],[698.46,0.55],[587.33,0.55],
+    [523.25,0.36],[587.33,0.36],[659.25,0.7],[523.25,0.7],
+    [493.88,0.36],[587.33,0.36],[659.25,0.55],[587.33,0.75]
+  ];
+  function playNote(freq,duration){
+    const now=audioCtx.currentTime;
+    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+    const tone=audioCtx.createOscillator(), toneGain=audioCtx.createGain();
+    osc.type='sine'; osc.frequency.value=freq;
+    tone.type='triangle'; tone.frequency.value=freq*2; toneGain.gain.value=0.035;
+    gain.gain.setValueAtTime(0.0001,now); gain.gain.exponentialRampToValueAtTime(0.12,now+0.025);
+    gain.gain.exponentialRampToValueAtTime(0.0001,now+duration);
+    osc.connect(gain); gain.connect(audioCtx.destination); tone.connect(toneGain); toneGain.connect(audioCtx.destination);
+    osc.start(now); tone.start(now); osc.stop(now+duration+0.03); tone.stop(now+duration+0.03);
+  }
+  function scheduleMelody(){
+    if(!playing)return;
+    const [freq,dur]=melody[noteIndex%melody.length];
+    playNote(freq,dur*0.9);
+    // gentle lower note underneath every fourth note
+    if(noteIndex%4===0) playNote(freq/2,dur*1.25);
+    noteIndex++;
+    timer=setTimeout(scheduleMelody,dur*650);
+  }
+  document.getElementById('musicBtn').addEventListener('click',async()=>{
+    const btn=document.getElementById('musicBtn'), status=document.getElementById('musicStatus');
+    if(!playing){
+      try{
+        audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+        if(audioCtx.state==='suspended') await audioCtx.resume();
+        playing=true; scheduleMelody(); btn.textContent='Ⅱ Pausar música'; status.textContent='Una melodía suave, hecha para acompañar tu cartita 🎹';
+      }catch(e){status.textContent='Tu navegador no pudo iniciar la música. Prueba abrir la página en Safari o Chrome.';}
+    }else{
+      playing=false; clearTimeout(timer); if(audioCtx) await audioCtx.suspend();
+      btn.textContent='♫ Activar piano suave'; status.textContent='Música en pausa 💗';
+    }
+  });
+</script>
+</body>
+</html>
